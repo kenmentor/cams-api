@@ -12,10 +12,9 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://agent-with-me-frountend.vercel.app",
+      "https://cams-frontend-ten.vercel.app",
       "http://localhost:3000",
       "http://localhost:3001",
-      "https://agent-with-me-v2.vercel.app",
     ], // remove space before http
     credentials: true,
   })

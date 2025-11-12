@@ -4,7 +4,7 @@ const resourceSchema = new mongoose.Schema(
   {
     host: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "testUser",
       required: true,
     },
     title: { type: String, required: true },
