@@ -5,7 +5,6 @@ const { userDB } = require("../modules");
 const { mailer, response, generateTokenAndSetCookie } = require("../utility");
 const { user_repository } = require("../repositories");
 const userRepo = new user_repository(userDB);
-const { generateVerificationCode } = require("../utility");
 const saltround = 10;
 const jwt_api_key = process.env.JWT_API_KEY;
 // this can delete a user when provide and id
@@ -45,7 +44,7 @@ async function filter(object) {
   return data;
 }
 
-// 
+//
 async function find_users(object) {
   console.log(object);
   return userRepo.filter(object);
