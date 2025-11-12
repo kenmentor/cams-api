@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "build": " mkdir -p dist && cp -r scr/* dist/"
+    "build": " mkdir -p dist && cp -r src/* dist/"
   },
   "keywords": [],
   "author": "",
