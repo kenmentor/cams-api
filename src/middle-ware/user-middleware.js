@@ -6,9 +6,9 @@ require("dotenv").config();
 function user_update(req, res, next) {
   userCookieVerify(req, req);
   const { body } = req;
-  if (!body.phoneNumber) {
+  if (!body.registration) {
     const badResponse = response.badResponse;
-    badResponse.message = "phoneNumber is required ";
+    badResponse.message = "registration number is required ";
     badResponse.status = 500;
     return res.json(badResponse);
   }
