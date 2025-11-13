@@ -113,7 +113,7 @@ async function signup_user(dataObject, res) {
       verificationTokenExpireAt: Date.now() + 24 * 60 * 60 * 1000, //24hr
     });
     console.log(data.email);
-
+    sendVerificationEmail(data.email, data.userName, verifyToken);
     return data;
   } catch (err) {
     console.log("erro creating user -complete-verification");
