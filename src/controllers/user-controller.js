@@ -67,7 +67,7 @@ async function edit_user_detail(req, res) {
   try {
     let object = {
       email: body.email,
-      phoneNumber: body.phoneNumber,
+      regNumber: body.regNumber,
     };
 
     object.profileImage = profileImageUrl;
@@ -164,7 +164,7 @@ async function signup_user(req, res) {
     response.badResponse.status = 501;
     return res.status(response.badResponse.status).json(response.badResponse);
   }
-  if (email && password && role && phoneNumber && dateOfBirth) {
+  if (email && password && role && regNumber && dateOfBirth) {
     const data = await verification_service.signup_user({
       email,
       password,
