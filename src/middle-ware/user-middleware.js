@@ -25,9 +25,9 @@ function user_update(req, res, next) {
 function user_create(req, res, next) {
   // userCookieVerify(req, res)
   const { body } = req;
-  if (!body.phoneNumber) {
+  if (!body.regNumber) {
     const badResponse = response.badResponse;
-    badResponse.message = "phoneNumber is required ";
+    badResponse.message = "regNumber is required ";
     badResponse.status = 500;
     return res.status(500).json(badResponse);
   }
@@ -46,7 +46,7 @@ function user_create(req, res, next) {
   }
   if (!body.password) {
     const badResponse = response.badResponse;
-    badResponse.message = "phoneNumber is required ";
+    badResponse.message = "regNumber is required ";
     badResponse.status(500).status = 500;
     return res.json(badResponse);
   }
