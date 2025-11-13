@@ -148,7 +148,7 @@ async function signup_user(req, res) {
     email,
     password,
     role = "geust",
-    phoneNumber,
+    regNumber,
     dateOfBirth,
     userName,
   } = req.body;
@@ -171,7 +171,7 @@ async function signup_user(req, res) {
       email,
       password,
       role,
-      phoneNumber,
+      regNumber,
       dateOfBirth,
       userName,
     });
