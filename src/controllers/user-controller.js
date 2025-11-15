@@ -157,14 +157,14 @@ async function signup_user(req, res) {
     email: email,
     verifiedEmail: true,
   });
-
+  console.log(email, password, role, regNumber, dateOfBirth, userName);
   if (alreadyExist) {
     response.badResponse.message = "this email have been used  ";
 
     response.badResponse.status = 501;
     return res.status(response.badResponse.status).json(response.badResponse);
   }
-  if (email && password && role && regNumber && dateOfBirth) {
+  if (email && password && role && regNumber) {
     const data = await verification_service.signup_user({
       email,
       password,
@@ -175,26 +175,28 @@ async function signup_user(req, res) {
       dateOfBirth,
       userName,
     });
-
-    // generateTokenAndSetCookie(res, data._id.toString());
+    console.log("data from controller ", data);
+    generateTokenAndSetCookie(res, data._id.toString());
 
     const { goodResponse } = response;
 
-    return res.status(goodResponse.status).json((goodResponse.data = data));
+    return res
+      .status(goodResponse.status)
+      .json({ ...goodResponse, data: data });
   }
   const { goodResponse } = response;
   return res
     .status(goodResponse.status)
     .json((response.badResponse.message = "all input is required"));
 }
-// async function verify_user(req, res) {
-//   const { verificationCode } = req.body;
-//   console.log(verificationCode)
-//   const data = await user_service.verify(verificationCode);
-//   const responseData = response.goodResponse;
-//   responseData.data = data;
-//   return res.json(responseData);
-// }
+async function verify_user(req, res) {
+  const { verificationCode } = req.body;
+  console.log(verificationCode);
+  const data = await user_service.verify(verificationCode);
+  const responseData = response.goodResponse;
+  responseData.data = data;
+  return res.json(responseData);
+}
 
 async function delete_user(req, res) {
   try {

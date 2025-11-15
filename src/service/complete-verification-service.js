@@ -104,6 +104,8 @@ async function login_user(password, email) {
 
 async function signup_user(dataObject, res) {
   try {
+    console.log("process have  started  ");
+    console.log(dataObject);
     const hashedPassword = await bcrypt.hash(dataObject.password, saltround);
     const verifyToken = await generateVerificationCode();
     const data = await verificationRepo.create({
@@ -112,8 +114,10 @@ async function signup_user(dataObject, res) {
       verifyToken: verifyToken,
       verificationTokenExpireAt: Date.now() + 24 * 60 * 60 * 1000, //24hr
     });
+    console.log(data);
     console.log(data.email);
     sendVerificationEmail(data.email, data.userName, verifyToken);
+    console.log(data);
     return data;
   } catch (err) {
     console.log("erro creating user -complete-verification");

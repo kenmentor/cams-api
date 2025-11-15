@@ -22,6 +22,12 @@ async function sendEmail(options) {
 
 // 🟡 Specific email helpers
 async function sendVerificationEmail(email, verificationToken, userName) {
+  console.log(
+    "this at the email section  ",
+    email,
+    verificationToken,
+    userName
+  );
   return sendEmail({
     to: email,
     subject: "Verify your email address",
