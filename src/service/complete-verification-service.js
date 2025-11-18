@@ -116,7 +116,7 @@ async function signup_user(dataObject, res) {
     });
     console.log(data);
     console.log(data.email);
-    sendVerificationEmail(data.email, data.userName, verifyToken);
+    //sendVerificationEmail(data.email, data.userName, verifyToken);
     console.log(data);
     return data;
   } catch (err) {
