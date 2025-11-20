@@ -3,7 +3,7 @@ require("dotenv").config();
 
 module.exports = (res, userId) => {
   const jwtApiKey = process.env.JWT_API_KEY;
-
+console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////",jwtApiKey)
   const token = jwt.sign({ userId }, jwtApiKey, { expiresIn: "30d" });
 
   const isProduction = process.env.NODE_ENV === "production";

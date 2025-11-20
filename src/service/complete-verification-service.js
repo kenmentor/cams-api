@@ -53,7 +53,7 @@ async function verify_email(code) {
       user.verifyToken = undefined;
       user.verificationTokenExpireAt = undefined;
       await user.save();
-      await sendWelcomeEmail(user.email, user.userName);
+      // await sendWelcomeEmail(user.email, user.userName);
     }
     console.log(user);
     return user;
