@@ -55,7 +55,7 @@ class house_repo extends crudRepositoryExtra {
         query.$text = { $search: searchTerms.join(" ") };
       }
 
-      // ❌ Exclude house ID if provided
+      // ❌ Exclude event ID if provided
       if (filter.id && filter.id !== "undefined") {
         query._id = { $ne: mongoose.Types.ObjectId(filter.id) };
       }

@@ -32,7 +32,7 @@ async function get_all_request(userId, role) {
     if (role == "guest") {
       return Request_repo.find({ guest: Object(userId) });
     }
-    if (role == "geust") {
+    if (role == "guest") {
       return Request_repo.find({ guest: Object(userId) });
     }
     if (role == "host") {

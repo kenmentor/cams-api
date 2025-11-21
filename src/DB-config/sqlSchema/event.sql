@@ -1,0 +1,16 @@
+CREATE TABLE events (
+  id VARCHAR(24) PRIMARY KEY,
+  host VARCHAR(24) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  maxguest INT DEFAULT 1,
+  location VARCHAR(255) NOT NULL,
+  views INT DEFAULT 0,
+  requestCount INT DEFAULT 0,
+  category VARCHAR(255) NOT NULL,
+  thumbnail TEXT,
+  avaliable BOOLEAN DEFAULT TRUE,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+ 

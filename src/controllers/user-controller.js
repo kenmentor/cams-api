@@ -97,6 +97,7 @@ function logout_user(req, res) {
 }
 async function login_user(req, res) {
   const { email, password } = req.body;
+  console.log(password);
   const api_key = process.env.JWT_API_KEY;
 
   console.log("Process started:", email, password);
@@ -147,7 +148,7 @@ async function signup_user(req, res) {
   const {
     email,
     password,
-    role = "geust",
+    role = "guest",
     regNumber,
     dateOfBirth,
     userName,
