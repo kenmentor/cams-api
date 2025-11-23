@@ -1,11 +1,15 @@
 const mongoose = require("mongoose");
-
+const todayDate = new Date();
 const resourceSchema = new mongoose.Schema(
   {
     host: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "testUser",
       required: true,
+    },
+    date: {
+      type: Date,
+      default: todayDate,
     },
     title: { type: String, required: true },
     description: { type: String, required: true },

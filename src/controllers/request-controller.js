@@ -12,8 +12,8 @@ const create_request = async (req, res) => {
       house: body.houseId,
     });
     console.log(already, "hello");
-    const bookingSelf = body.hostId === body.guestId;
-    if (!already && bookingSelf) {
+    const attendingSelf = body.hostId === body.guestId;
+    if (!already && attendingSelf) {
       const data = await requst_service.create_request({
         hostId: body.hostId,
         guestId: body.guestId,
@@ -29,7 +29,7 @@ const create_request = async (req, res) => {
       Response.badResponse.status = 401;
       return res.status(401).json(Response.badResponse);
     }
-    Response.badResponse.message = "you cant book you house  ";
+    Response.badResponse.message = "you cannot request your own event ";
     Response.badResponse.status = 401;
     return res.status(401).json(Response.badResponse);
   } catch (error) {

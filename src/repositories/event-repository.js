@@ -38,7 +38,7 @@ class house_repo extends crudRepositoryExtra {
   }
   async filter(filter) {
     try {
-      let query = {};
+      let query = { avaliable: true };
 
       // 🔎 Step 1: Text-based filters
       const textFilters = ["location", "type", "category"];

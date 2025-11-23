@@ -1,4 +1,4 @@
-const { response } = require("../utility")
+const { response } = require("../utility");
 function booking_create(req, res, next) {
   const { body } = req;
   if (!body.hostId) {
@@ -13,7 +13,7 @@ function booking_create(req, res, next) {
     badResponse.status = 500;
     return res.json(badResponse);
   }
-  if (!body.houseId) {
+  if (!body.eventId) {
     const badResponse = response.badResponse;
     badResponse.message = "houseId is required ";
     badResponse.status = 500;
