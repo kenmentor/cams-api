@@ -71,6 +71,7 @@ async function login_user(password, email) {
     console.log("process have  after bcryt  ");
     const user = await verificationRepo.findOne({
       email: email,
+      verifiedEmail: true,
     });
     if (user) {
       console.log(user, "11");
