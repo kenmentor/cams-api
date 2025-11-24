@@ -7,7 +7,7 @@ const { request_middleware } = require("../../middle-ware");
 //crete a request
 router.post(
   "/",
-  request_middleware.booking_create,
+  // request_middleware.booking_create,
   request_controller.create_request
 );
 //host://v1/request/requestId
