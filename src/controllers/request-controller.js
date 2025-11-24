@@ -12,12 +12,12 @@ const create_request = async (req, res) => {
       event: body.event,
     });
     console.log(already, "hello");
-    const attendingSelf = body.hostId === body.guestId;
+    const attendingSelf = body.host === body.guest;
     if (!already && attendingSelf) {
       const data = await requst_service.create_request({
-        hostId: body.hostId,
-        guestId: body.guestId,
-        houseId: body.houseId,
+        host: body.host,
+        guest: body.guest,
+        event: body.event,
       });
       Response.goodResponse.data = data;
       Response.goodResponse.message = "usesfully created request ";
