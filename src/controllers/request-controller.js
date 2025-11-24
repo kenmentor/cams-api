@@ -7,9 +7,9 @@ const create_request = async (req, res) => {
   const body = req.body;
   try {
     const already = await requst_service.alreadyExit({
-      host: body.hostId,
-      guest: body.guestId,
-      house: body.houseId,
+      host: body.host,
+      guest: body.guest,
+      event: body.event,
     });
     console.log(already, "hello");
     const attendingSelf = body.hostId === body.guestId;
