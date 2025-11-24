@@ -171,7 +171,7 @@ async function signup_user(req, res) {
       password,
       email,
       password,
-      role,
+      role: "guest",
       regNumber,
       dateOfBirth,
       userName,

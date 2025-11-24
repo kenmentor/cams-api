@@ -12,9 +12,9 @@ const requestSchema = new mongoose.Schema(
       ref: "testUser",
       required: true,
     },
-    house: {
+    event: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "testUser",
+      ref: "testEvent",
       required: true,
     },
     accepted: {
