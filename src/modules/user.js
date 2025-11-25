@@ -38,6 +38,14 @@ const userSchema = new mongoose.Schema(
       type: Number,
       default: 1,
     },
+    applyHost: {
+      type: Boolean,
+      default: false,
+    },
+    adminApproved: {
+      type: Boolean,
+      default: false,
+    },
 
     profileImage: {
       type: String,

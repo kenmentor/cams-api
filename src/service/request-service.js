@@ -2,21 +2,23 @@ const { request_repo } = require("../repositories");
 const { requestDB } = require("../modules");
 const { sendRequestEmail } = require("../utility/mail-trap/emails");
 const { event_service } = require(".");
+const { update_event } = require("../service/event-service");
 
 const Request_repo = new request_repo(requestDB);
 // correct all good
 async function create_request(object) {
-  const hostId = object.hostId;
-  const guestId = object.guestId;
+  const hostId = object.host;
+  const guestId = object.guest;
   const eventId = object.event;
   try {
     const data = await Request_repo.create({
       host: hostId,
       guest: guestId,
-      house: eventId,
+      event: eventId,
     });
-
-    sendRequestEmail(data.email, data.hostId, data.guest);
+    const event = await update_event(eventId, { $inc: { requestCount: 1 } });
+    console.log("event after request creation", event);
+    // sendRequestEmail(data.email, data.hostId, data.guest);
     return data;
   } catch (erro) {
     console.error(erro);

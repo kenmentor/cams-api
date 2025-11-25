@@ -4,6 +4,7 @@ class house_repo extends crudRepositoryExtra {
   constructor(module) {
     super(module);
   }
+
   async getDetail(id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new Error("Invalid resource ID format");

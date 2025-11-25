@@ -13,7 +13,8 @@ const create_request = async (req, res) => {
     });
     console.log(already, "hello");
     const attendingSelf = body.host === body.guest;
-    if (!already && attendingSelf) {
+    if (!already && !attendingSelf) {
+      console.log(body);
       const data = await requst_service.create_request({
         host: body.host,
         guest: body.guest,

@@ -30,6 +30,7 @@ async function verify(verificationCode) {
 
 // users can edit their details using this function (provide user id an new detail object)
 async function edit_user_details(id, object) {
+  console.log(object, "service");
   const data = await userRepo.update(id, object);
   return data;
 }

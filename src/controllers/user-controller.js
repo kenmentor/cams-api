@@ -40,7 +40,7 @@ async function get_user(req, res) {
 async function edit_user_detail(req, res) {
   const id = req.params.id;
   const { body, file, files } = req;
-  console.log(file);
+  console.log(body);
   const uploadBufferToCloudinary = (fileBuffer, folder = "user") => {
     return new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
@@ -59,16 +59,17 @@ async function edit_user_detail(req, res) {
   };
 
   let profileImageUrl = "";
-  console.log(file, "that is it ");
-  const result = await uploadBufferToCloudinary(file.buffer, "profileImage");
-  profileImageUrl = result.secure_url;
-  console.log(profileImageUrl, "hrhjrhrrhjrhrhrhrhrhrhhrhrhrhrhrh");
-
+  if (file) {
+    console.log(file, "that is it ");
+    const result = await uploadBufferToCloudinary(file.buffer, "profileImage");
+    profileImageUrl = result.secure_url;
+    console.log(profileImageUrl, "hrhjrhrrhjrhrhrhrhrhrhhrhrhrhrhrh");
+  }
   try {
     let object = {
-      email: body.email,
-      regNumber: body.regNumber,
+      ...body,
     };
+    console.log(object, "controller", id);
 
     object.profileImage = profileImageUrl;
     // Handle Cloudinary upload
