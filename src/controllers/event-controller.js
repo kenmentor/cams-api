@@ -63,6 +63,7 @@ async function update_event_view(req, res) {
 async function upload_event(req, res) {
   try {
     const { files, body } = req;
+    console.log(body);
 
     console.log(body, "fjbbjbjbjjb");
 
@@ -110,10 +111,12 @@ async function update_event(req, res) {
 
 async function delete_event(req, res) {
   console.log("commmmmmmmmm");
-  const id = await req.body.id;
-  const data = await user_service.delete();
+  const id = await req.params.id;
+  console.log("this the user data ", req.body);
+  const data = await event_service.delete_event(id);
   const responseData = response.goodResponse;
   responseData.data = data;
+  console.log("deleted");
   res.json(responseData);
 }
 async function attend(req, res) {

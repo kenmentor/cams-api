@@ -44,6 +44,15 @@ async function update_event_view(id) {
   }
 }
 // correct all good
+async function delete_event(id) {
+  try {
+    const data = await newcrudRepositoryExtra.delete(id);
+    return data;
+  } catch (err) {
+    console.error("Error while updating event view:", err);
+    throw err;
+  }
+}
 async function upload_event(files, body) {
   await connectDB();
   console.log("UPLOAD SERVICE ");
@@ -76,11 +85,15 @@ async function upload_event(files, body) {
   }
 
   body.thumbnail = thumbnailUrl;
+  let maxnumber = body.maxgeust;
+  body.maxgeust = Number(maxnumber);
+  console.log(body);
 
   // body.host = Object(body.host);
 
   const data = await newcrudRepositoryExtra.create(body);
   await data.save();
+  console.log(data);
   return data;
 }
 
@@ -90,4 +103,5 @@ module.exports = {
   upload_event,
   get_details,
   update_event,
+  delete_event,
 };

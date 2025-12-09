@@ -14,7 +14,10 @@ const resourceSchema = new mongoose.Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
     maxguest: { type: Number, default: 1 },
-
+    requestCount: {
+      type: Number,
+      default: 0,
+    },
     location: { type: String, required: true },
 
     views: {

@@ -17,6 +17,7 @@ async function create_request(object) {
       event: eventId,
     });
     const event = await update_event(eventId, { $inc: { requestCount: 1 } });
+    console.log(event);
     console.log("event after request creation", event);
     // sendRequestEmail(data.email, data.hostId, data.guest);
     return data;
@@ -30,6 +31,13 @@ function delete_request(id) {
 }
 // correct all good
 async function get_all_request(userId, role) {
+  try {
+    return Request_repo.find();
+  } catch (error) {
+    throw error;
+  }
+}
+async function get_request(userId, role) {
   try {
     if (role == "guest") {
       return Request_repo.find({ guest: Object(userId) });
@@ -82,6 +90,7 @@ module.exports = {
   create_request: create_request,
   delete_request: delete_request,
   get_all_request: get_all_request,
+  get_request: get_request,
   get_request_details: get_request_details,
   update_request: update_request,
   alreadyExit,

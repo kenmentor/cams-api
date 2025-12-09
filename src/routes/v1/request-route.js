@@ -15,9 +15,10 @@ router.post(
 router.get("/:id", request_controller.get_request_details);
 //host://v1/request/houseId
 // getting all request with the guest/host id
-router.get("/list/:userId", request_controller.get_all_request);
+router.get("/list/:userId", request_controller.getrequest);
 ////
 router.delete("/:requestId", request_controller.delete_request);
+router.get("/", request_controller.get_all_request);
 ///////////
 router.put("/:requestId", request_controller.update_request);
 module.exports = router;

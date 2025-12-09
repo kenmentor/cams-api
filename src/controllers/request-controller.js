@@ -1,4 +1,5 @@
 const { requst_service } = require("../service");
+const { update_event } = require("../service/event-service");
 
 const { response } = require("../utility");
 
@@ -20,6 +21,7 @@ const create_request = async (req, res) => {
         guest: body.guest,
         event: body.event,
       });
+      await update_event(body.event, {});
       Response.goodResponse.data = data;
       Response.goodResponse.message = "usesfully created request ";
       console.log("passed");
@@ -78,6 +80,22 @@ const get_request_details = async (req, res) => {
   }
 };
 
+const getrequest = async (req, res) => {
+  const Response = response;
+
+  const userId = await req.params.userId;
+  const role = await req.query.role;
+  console.log(userId, role);
+  try {
+    const data = await requst_service.get_all_request(userId, role);
+
+    Response.goodResponse.message = "usesfully retrived request list  ";
+    Response.goodResponse.data = data;
+    return res.json(Response.goodResponse);
+  } catch (error) {
+    return res.json(Response.badResponse);
+  }
+};
 const get_all_request = async (req, res) => {
   const Response = response;
 
@@ -100,5 +118,6 @@ module.exports = {
   update_request: update_request,
   delete_request: delete_request,
   get_request_details: get_request_details,
+  getrequest: getrequest,
   get_all_request: get_all_request,
 };

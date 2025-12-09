@@ -16,6 +16,7 @@ router.get("/detail/:id", event_controller.get_event_detail);
 router.put("/", event_controller.update_event_view);
 // update event
 router.put("/:id", event_controller.update_event);
+router.delete("/:id", event_controller.delete_event);
 //v1/upload  (upload files and it details)
 router.post("/", upload_molter, event_controller.upload_event);
 

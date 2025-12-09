@@ -229,6 +229,7 @@ async function find_users(req, res) {
       id: id,
       adminVerified: adminVerified,
     });
+    console.log("this is the user", data);
     const responseData = response.goodResponse;
     responseData.data = data;
     return res.json(responseData).status(200);
